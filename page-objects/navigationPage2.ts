@@ -14,18 +14,16 @@ export class NavigationPage {
 
   async datepickerPage() {
     await this.groupItemMenu("Forms");
-    // await this.page.waitForTimeout(1000);
     await this.page.getByText("Datepicker").click();
   }
 
-  async ToastrPage() {
+  async toastrPage() {
     await this.groupItemMenu("Modal & Overlays");
     await this.page.getByText("Toastr").click();
   }
 
-  async TooltipPage() {
+  async tooltipPage() {
     await this.groupItemMenu("Modal & Overlays");
-    // await this.page.waitForTimeout(1000);
     await this.page.getByText("Tooltip").click();
   }
 
@@ -34,19 +32,17 @@ export class NavigationPage {
     await this.page.getByText("Smart Table").click();
   }
 
-  // 建立"私人的"一個函式，去判斷每一個主選單的開合狀態是打開 OR 關閉
+  // 建立一個確定左側主選單是否展開或關閉的 函式
   private async groupItemMenu(groupItem: string) {
-    // 先建立每個主選單的定位器
-    const groupItemMenuSelector = this.page.getByTitle(groupItem);
-    const expandStatus = await groupItemMenuSelector.getAttribute(
-      "aria-expanded"
-    );
+    // 先抓取每個大標題的定位器
+    const itemMenu = this.page.getByTitle(groupItem);
+    // 抓屬性
+    const isExpand = await itemMenu.getAttribute("aria-expanded");
 
-    // 條件式: 假如 expandStatus 是 true (打開)，就不用再點擊 主選單 再次打開了
-    //        假如 expandStatus 是 false (關閉)，就要再點擊 主選單 打開
-    // 因為它是字串，不是布林值
-    if (expandStatus == "false") {
-      await groupItemMenuSelector.click();
+    //假如 isExpand 是 "false" ，就要打開
+    // 因為 isExpand 是字串，不是boolean
+    if (isExpand == "false") {
+      await itemMenu.click();
     }
   }
 }
