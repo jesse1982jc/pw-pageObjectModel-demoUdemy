@@ -58,10 +58,10 @@ export class DatepickerPage {
     const expectDate = date.getDate().toString();
     const expectMonthShort = date.toLocaleString("en-US", { month: "short" });
     const expectMonthLong = date.toLocaleString("en-US", { month: "long" });
-    const exppectYear = date.getFullYear().toString();
+    const expectYear = date.getFullYear().toString();
 
     // 建立 input 欄位的預期日期
-    const expectMonthDateYear = `${expectMonthShort} ${expectDate}, ${exppectYear}`;
+    const expectMonthDateYear = `${expectMonthShort} ${expectDate}, ${expectYear}`;
 
     // 建立日曆展開，左上角的 日、年的"內容"
     let calendarMonthYear = await this.page
@@ -69,7 +69,7 @@ export class DatepickerPage {
       .textContent();
 
     // 建立預期日曆上的 月、年
-    const expectCalendarMonthYear = ` ${expectMonthLong} ${exppectYear} `;
+    const expectCalendarMonthYear = ` ${expectMonthLong} ${expectYear} `;
 
     // 假如 expectCalendarMonthYear 不在 calendarMonthYear 裡面，就一直跑 while 迴圈
     while (!calendarMonthYear.includes(expectCalendarMonthYear)) {

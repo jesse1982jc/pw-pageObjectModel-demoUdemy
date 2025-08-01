@@ -9,13 +9,13 @@ test.beforeEach(async ({ page }) => {
 
 test("navigate to form page", async ({ page }) => {
   // 先創建類別的實例
-  const natigateTo = new NavigationPage(page);
+  const navigateTo = new NavigationPage(page);
   // 叫實例去做事
-  await natigateTo.formLayoutsPage();
-  await natigateTo.datepickerPage();
-  await natigateTo.toastrPage();
-  await natigateTo.tooltipPage();
-  await natigateTo.smartTablePage();
+  await navigateTo.formLayoutsPage();
+  await navigateTo.datepickerPage();
+  await navigateTo.toastrPage();
+  await navigateTo.tooltipPage();
+  await navigateTo.smartTablePage();
 });
 
 test("parametrized methods", async ({ page }) => {
@@ -40,6 +40,6 @@ test("parametrized methods", async ({ page }) => {
   // 先導航到 datepicker 頁面
   await navigateTo.datepickerPage();
   // 執行點選日期的動作
-  await toDatepickerPage.formPickerDayFromToday(30);
-  await toDatepickerPage.rangePickerDayFromToday(60, 365);
+  await toDatepickerPage.formPickerDayFromToday(3);
+  await toDatepickerPage.rangePickerDayFromToday(2, 4);
 });
