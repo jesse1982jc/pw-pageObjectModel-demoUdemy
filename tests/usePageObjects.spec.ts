@@ -41,6 +41,6 @@ test("parametrized methods", async ({ page }) => {
   );
 
   await navigateTo.datepickerPage();
-  await datepicketTo.commonDatepickerTheDayfromToday(3);
-  await datepicketTo.rangepickerTheDayFromToday(3, 5);
+  await datepicketTo.commonDatepickerTheDayfromToday(60);
+  await datepicketTo.rangepickerTheDayFromToday(2, 400);
 });
